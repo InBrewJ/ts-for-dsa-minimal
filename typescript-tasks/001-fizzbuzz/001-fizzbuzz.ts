@@ -8,20 +8,20 @@
  * Find all multiples of 3 & 5 within a range of 1000. Return multiples of 3 as "Fizz", multiples of 5 as "Buzz" and multiples of both as "FizzBuzz".
  */
 
-export const fizzBuzz = (value: number): string | number => {
-  const isMultipleOf3 = value % 3 === 0;
-  const isMultipleOf5 = value % 5 === 0;
-  const isBoth = isMultipleOf3 && isMultipleOf5;
+const isFizz = (value) => value % 3 === 0;
+const isBuzz = (value) => value % 5 === 0;
+const isFizzBuzz = (value) => isFizz(value) && isBuzz(value);
 
-  if (isBoth) {
+export const fizzBuzz = (value: number): string | number => {
+  if (isFizzBuzz(value)) {
     return "FizzBuzz";
   }
 
-  if (isMultipleOf3) {
+  if (isFizz(value)) {
     return "Fizz";
   }
 
-  if (isMultipleOf5) {
+  if (isBuzz(value)) {
     return "Buzz";
   }
 

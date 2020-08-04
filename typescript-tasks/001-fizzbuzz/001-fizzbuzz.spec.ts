@@ -10,7 +10,9 @@ describe("fizzBuzz", () => {
     expect(result).toMatch("Buzz");
   });
   it("Should return FizzBuzz if value is multiple of 3 & 5", () => {
-    const result = fizzBuzz(0);
+    let result = fizzBuzz(0);
+    expect(result).toMatch("FizzBuzz");
+    result = fizzBuzz(15);
     expect(result).toMatch("FizzBuzz");
   });
   it("Should return value if value is not a multiple of 3 or 5", () => {
