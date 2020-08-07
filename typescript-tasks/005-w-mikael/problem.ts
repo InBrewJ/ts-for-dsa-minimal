@@ -6,12 +6,12 @@
 // # ["apple", "pear"]
 
 export const take = (values, numToTake: number) => {
-    let returnArray = []
-    
-    for(let i = 0; i < numToTake; ++i) {
-        const index = i % values.length;
-        returnArray.push(values[index])   
-    }
+  let returnArray = [];
 
-    return returnArray
-}
+  for (let i = 0; i < numToTake; ++i) {
+    const index = i % values.length;
+    returnArray.push(values[index]);
+  }
+
+  return returnArray;
+};
