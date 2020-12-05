@@ -5,27 +5,34 @@ class Sorter {
     return [list.slice(0, pos), list.slice(pos, list.length)];
   };
 
+  private tail = (l: number[]) => l.slice(1, l.length);
+
+  private asInt = (n: number) => Math.floor(n);
+
+  private prepend = (newElement: number, list: number[]) => {
+    list.unshift(newElement);
+    return list;
+  };
+
   public msort = (less: Function) => (list: number[]) => {
     const merge = (xs: number[], ys: number[]): number[] => {
-      if (this.isEmpty(xs) && !this.isEmpty(ys)) {
-        return ys;
-      }
-      if (!this.isEmpty(xs) && this.isEmpty(ys)) {
-        return xs;
-      }
-
-      if (less(xs[0], ys[0])) {
-        const a = merge(xs.slice(1, xs.length), ys);
-        a.unshift(xs[0]);
-        return a;
-      } else {
-        const b = merge(xs, ys.slice(1, ys.length));
-        b.unshift(ys[0]);
-        return b;
+      switch (true) {
+        case this.isEmpty(xs) && !this.isEmpty(ys):
+          return ys;
+        case !this.isEmpty(xs) && this.isEmpty(ys):
+          return xs;
+        default:
+          const firstXs = xs[0];
+          const firstYs = ys[0];
+          if (less(firstXs, firstYs)) {
+            return this.prepend(firstXs, merge(this.tail(xs), ys));
+          } else {
+            return this.prepend(firstYs, merge(xs, this.tail(ys)));
+          }
       }
     };
 
-    const n: number = Math.floor(list.length / 2);
+    const n: number = this.asInt(list.length / 2);
     if (n === 0) {
       return list;
     } else {
@@ -35,7 +42,7 @@ class Sorter {
   };
 }
 
-export const mergeSorter = (list: number[]) => {
+export const mergeSorterAsc = (list: number[]) => {
   const sorter = new Sorter();
   return sorter.msort((x, y) => x < y)(list);
 };
