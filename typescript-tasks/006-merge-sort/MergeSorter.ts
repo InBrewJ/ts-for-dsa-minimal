@@ -10,8 +10,7 @@ class Sorter {
   private asInt = (n: number) => Math.floor(n);
 
   private prepend = (newElement: number, list: number[]) => {
-    list.unshift(newElement);
-    return list;
+    return [newElement, ...list];
   };
 
   public msort = (less: Function) => (list: number[]) => {
@@ -44,10 +43,12 @@ class Sorter {
 
 export const mergeSorterAsc = (list: number[]) => {
   const sorter = new Sorter();
-  return sorter.msort((x, y) => x < y)(list);
+  const ascSorter = sorter.msort((x, y) => x < y);
+  return ascSorter(list);
 };
 
 export const mergeSorterDesc = (list: number[]) => {
   const sorter = new Sorter();
-  return sorter.msort((x, y) => x > y)(list);
+  const descSorter = sorter.msort((x, y) => x > y);
+  return descSorter(list);
 };
