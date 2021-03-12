@@ -1,4 +1,4 @@
-import { translateObj } from "./problem";
+import { translateObj, TranslationConfig } from "./problem";
 
 describe("translate a typedf object, keys and values alike", () => {
   it("translates the keys of a simple object", () => {
@@ -13,7 +13,7 @@ describe("translate a typedf object, keys and values alike", () => {
       three: "3",
     };
 
-    const conf = new Map<string, string>([
+    const conf = new TranslationConfig([
       ["un", "one"],
       ["deux", "two"],
       ["trois", "three"],
@@ -42,7 +42,7 @@ describe("translate a typedf object, keys and values alike", () => {
       three: "3",
     };
 
-    const conf = new Map<string, string>([
+    const conf = new TranslationConfig([
       ["un", "one"],
       ["deux", "two"],
       ["trois", "three"],
@@ -110,7 +110,7 @@ describe("translate a typedf object, keys and values alike", () => {
       },
     };
 
-    const conf = new Map<string, string>([
+    const conf = new TranslationConfig([
       ["un", "one"],
       ["deux", "two"],
       ["trois", "three"],
@@ -133,7 +133,7 @@ describe("translate a typedf object, keys and values alike", () => {
       "not:in:map": "nope",
     };
 
-    const conf = new Map<string, string>([
+    const conf = new TranslationConfig([
       ["un", "one"],
       ["deux", "two"],
       ["trois", "three"],

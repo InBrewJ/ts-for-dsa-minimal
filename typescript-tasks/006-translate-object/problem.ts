@@ -1,4 +1,4 @@
-export type TranslationConfig = Map<string, string>;
+export class TranslationConfig extends Map<string, string> {}
 
 export const translateObj = (
   obj: Record<string, any>,
