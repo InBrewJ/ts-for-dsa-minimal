@@ -67,7 +67,18 @@ describe("translate a typedf object, keys and values alike", () => {
           },
         },
       },
-      trois: "3",
+      trois: {
+        un: {
+          deux: "2",
+          trois: {
+            un: "1",
+          },
+        },
+        deux: "2",
+        trois: {
+          un: "1",
+        },
+      },
     };
 
     const expected = {
@@ -85,7 +96,18 @@ describe("translate a typedf object, keys and values alike", () => {
           },
         },
       },
-      three: "3",
+      three: {
+        one: {
+          two: "2",
+          three: {
+            one: "1",
+          },
+        },
+        two: "2",
+        three: {
+          one: "1",
+        },
+      },
     };
 
     const conf = new Map<string, string>([
@@ -102,15 +124,18 @@ describe("translate a typedf object, keys and values alike", () => {
       un: "1",
       deux: "2",
       trois: "3",
+      "not:in:map": "nope",
     };
     const expected = {
       one: "1",
-      deux: "2",
+      two: "2",
       three: "3",
+      "not:in:map": "nope",
     };
 
     const conf = new Map<string, string>([
       ["un", "one"],
+      ["deux", "two"],
       ["trois", "three"],
     ]);
 
