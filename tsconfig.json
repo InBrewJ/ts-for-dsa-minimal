@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "lib": ["es2018", "dom", "esnext"]
+  },
+  "include": ["typescript-tasks/**/*"],
+  "exclude": ["node_modules"]
+}
