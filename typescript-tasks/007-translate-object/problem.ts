@@ -1,6 +1,6 @@
 export class TranslationConfig extends Map<string, string> {}
 
-export const translateObj = (
+export const translateObj = <T>(
   obj: Record<string, any>,
   conf: TranslationConfig
 ) => {
@@ -18,5 +18,5 @@ export const translateObj = (
       return [key, val];
     }
   });
-  return Object.fromEntries(translated as any[]);
+  return Object.fromEntries(translated as any[]) as unknown as T;
 };
